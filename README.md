@@ -1,47 +1,76 @@
-# 📊 Previsão de Estoque Inteligente na AWS com [SageMaker Canvas](https://aws.amazon.com/pt/sagemaker/canvas/)
+# 📊 Previsão de Estoque Inteligente na AWS com SageMaker Canvas - Meu Projeto
 
-Bem-vindo ao desafio de projeto "Previsão de Estoque Inteligente na AWS com SageMaker Canvas. Neste Lab DIO, você aprenderá a usar o SageMaker Canvas para criar previsões de estoque baseadas em Machine Learning (ML). Siga os passos abaixo para completar o desafio!
-
-## 📋 Pré-requisitos
-
-Antes de começar, certifique-se de ter uma conta na AWS. Se precisar de ajuda para criar sua conta, confira nosso repositório [AWS Cloud Quickstart](https://github.com/digitalinnovationone/aws-cloud-quickstart).
 
 
 ## 🎯 Objetivos Deste Desafio de Projeto (Lab)
 
 ![image](https://github.com/digitalinnovationone/lab-aws-sagemaker-canvas-estoque/assets/730492/72f5c21f-5562-491e-aa42-2885a3184650)
 
-- Dê um fork neste projeto e reescreva este `README.md`. Sinta-se à vontade para detalhar todo o processo de criação do seu Modelo de ML para uma "Previsão de Estoque Inteligente".
-- Para isso, siga o [passo a passo] descrito a seguir e evolua as suas habilidades em ML no-code com o Amazon SageMaker Canvas.
-- Ao concluir, envie a URL do seu repositório com a solução na plataforma da DIO.
 
 
 ## 🚀 Passo a Passo
 
 ### 1. Selecionar Dataset
 
--   Navegue até a pasta `datasets` deste repositório. Esta pasta contém os datasets que você poderá escolher para treinar e testar seu modelo de ML. Sinta-se à vontade para gerar/enriquecer seus próprios datasets, quanto mais você se engajar, mais relevante esse projeto será em seu portfólio.
--   Escolha o dataset que você usará para treinar seu modelo de previsão de estoque.
--   Faça o upload do dataset no SageMaker Canvas.
+Para o desenvolvimento desse projeto, foi utilizado o dataset [dataset-1000-com-preco-variavel-e-renovacao-estoque.csv](datasets/dataset-1000-com-preco-variavel-e-renovacao-estoque.csv) que continha dados variaveis e com uma precisão mais verdadeira dos perceintis.
 
 ### 2. Construir/Treinar
 
--   No SageMaker Canvas, importe o dataset que você selecionou.
--   Configure as variáveis de entrada e saída de acordo com os dados.
--   Inicie o treinamento do modelo. Isso pode levar algum tempo, dependendo do tamanho do dataset.
+-   Após a importação do arquivo no SageMaker e seleção das variaveis de entrada e sainda é nos dado dois caminhos para treinar a ML que ira nos ajudar com os dados, neste projeto foi utilizado o mais rapido e menos preciso, para fins didáticos. 
 
 ### 3. Analisar
 
--   Após o treinamento, examine as métricas de performance do modelo.
--   Verifique as principais características que influenciam as previsões.
--   Faça ajustes no modelo se necessário e re-treine até obter um desempenho satisfatório.
+-   Realizado o treinamento do ajudante, nos é apresentado um diagrama com dados e perceintis com modelaos otimistas, pessimistas e medianos para termos uma insight para a previsão.
 
 ### 4. Prever
 
--   Use o modelo treinado para fazer previsões de estoque.
--   Exporte os resultados e analise as previsões geradas.
--   Documente suas conclusões e qualquer insight obtido a partir das previsões.
+-   Por fim, temos dados estruturados prontos para analisarmos o que poderá acontecer se tal situação que coloquemos la altere a previsão, de facil acesso, prático e com uma automatização de um processo que antes seria trabalhoso e poderia conter diversos erros.
 
-## 🤔 Dúvidas?
+# Curiosidades 💡
 
-Esperamos que esta experiência tenha sido enriquecedora e que você tenha aprendido mais sobre Machine Learning aplicado a problemas reais. Se tiver alguma dúvida, não hesite em abrir uma issue neste repositório ou entrar em contato com a equipe da DIO.
+Os modelos de ML (Machine Learning) apresentam algumas siglas que são sempre motivo de analise e estudos entre os cientistas de dados, vamos dar uma olhada nelas abaixo!
+
+### 1. Avg wQl (Average Weighted Quality)
+
+    *Definição: Esta métrica é uma forma de medir a qualidade média ponderada das previsões do modelo.
+    O "weighted" geralmente indica que diferentes observações têm diferentes níveis de importância ou "peso"  
+    na avaliação da qualidade.
+
+Seu uso pode ser para entender o desempenho geral do modelo, levando em conta a importância relativa das previsões.
+
+### 2. MAPE (Mean Absolute Percentage Error)
+    *Definição: O MAPE mede o erro absoluto médio em termos percentuais.
+    É calculado como a média das diferenças absolutas entre as previsões e os valores reais, 
+    divididas pelos valores reais e multiplicadas por 100.onde 𝑦𝑖 é o valor real,
+    𝑦^𝑖 é o valor previsto e n é o número total de observações.
+    
+![image](mape.png)
+
+
+Ela é útil para entender a precisão das previsões em termos percentuais, especialmente quando os valores reais variam em escala.
+
+### 3. WAPE (Weighted Absolute Percentage Error)
+    *Definição: O WAPE é uma variação do MAPE que leva em consideração pesos associados às observações.
+    É calculado como a soma dos erros absolutos ponderados, dividida pela soma dos valores reais ponderados 
+    onde 𝑤𝑖 é o peso associado à i-ésima observação.
+
+![image](wape.png)
+
+Útil em contextos onde diferentes observações têm diferentes importâncias ou frequências.
+
+### 4. RMSE (Root Mean Squared Error)
+    *Definição: O RMSE é a raiz quadrada da média dos erros quadráticos.
+    Mede a magnitude média dos erros em um modelo preditivo.
+
+![image](rmse.png)
+
+Serve para entender a dispersão dos erros das previsões em relação aos valores reais, com erros maiores tendo um impacto desproporcional devido ao quadrado.
+
+### 5. MASE (Mean Absolute Scaled Error)
+    *Definição: O MASE é uma métrica que compara o erro absoluto médio do modelo
+    com o erro absoluto médio de um modelo de referência (geralmente um modelo de "no-change" ou de previsão simples).
+    É calculado como:
+
+![image](mase.png)
+
+Compara o desempenho do modelo com uma linha de base e avalia se o modelo está realmente oferecendo melhorias significativas em relação a uma abordagem simples.
